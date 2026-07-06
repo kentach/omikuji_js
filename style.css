@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #efe6d3;
+  min-height: 100vh;
+}
+
+main{
+  width: 320px;
+  margin: 60px auto;
+}
+
+.omikuji-container {
+  position: relative;
+  border: 3px solid #c1272d;
+  outline: 1px solid #b6902f; /* 線の外側のライン */
+  text-align: center;
+  color: #c1272d;
+  border-radius: 2px;
+  outline-offset: -7px; /* 線の内側のライン */
+  box-shadow: 0 10px 24px rgba(45, 20, 10, 0.18);
+  overflow: hidden;
+  background:
+  
+    radial-gradient(circle at 85% 8%, rgba(182,144,47,0.10), transparent 40%),
+    #f7efdb;
+}
+
+/* ::before は疑似要素。HTMLを書き換えなくても、
+要素の先頭に仮想的な要素を追加できる。*/
+
+.omikuji-container::before { 
+  content: ""; /* ::beforeや::afterを表示するために必要なプロパティ */
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+
+  /* グラデーションを繰り返す関数 */
+  background: repeating-linear-gradient(
+    -45deg, /* グラデーションの向き 斜め45度　*/
+    rgba(193,39,45,0.16) 0 4px,
+    transparent 4px 8px
+  );
+}
+
+.omikuji-container .stamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid #c1272d;
+  border-radius: 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Noto Serif JP", serif;
+  font-weight: 900;
+  font-size: 15px;
+  color: #c1272d;
+  transform: rotate(3deg);
+  opacity: 0.85;
+  transition: 1s ease ;
+}
+
+
+.omikuji-container h1 {
+  font-size: 25px;
+  margin: 0; 
+  padding: 14px 0;
+  font-weight: normal;
+  border-bottom: 2px solid #c1272d;;
+}
+
+.omikuji-container p {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 900;
+  color: #2c2620;
+  height: 160px;
+  font-size: 34px;
+  letter-spacing: 0.06em;
+  padding: 36px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease;
+  /* transition: プロパティ 時間 イージング; */
+
+  /* 
+  - ease	最初と最後がゆっくり（最もよく使う）
+  - ease-in	最初がゆっくり
+  - ease-out	最後がゆっくり
+  - ease-in-out	最初も最後もゆっくり 
+  */
+}
+
+#btn {
+  all: unset;
+  display: block;
+  padding: 12px 0;
+  margin: 20px 20px 20px;
+  width: calc(100% - 40px);
+  font-family: "Shippori Mincho", serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  background: linear-gradient(180deg, #cc3238, #b8262c);
+  /* 方向：グラデーションの向き 色1：開始色 色2：終了色 */
+
+  box-shadow: 0 4px 0 #6e0f14;
+  color: #f7efdb;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#btn:hover {
+  background: linear-gradient(180deg, #d63a40, #c1272d);
+}
+
+/* ボタンをクリックしたときの動き　*/
+#btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #6e0f14;
+}
